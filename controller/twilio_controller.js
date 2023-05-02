@@ -1,5 +1,5 @@
 const userModel = require('../model/user_model')
-require('dotenv').config();
+require('dotenv')
 
 let config = {
     serviceId: process.env.serviceId,
@@ -11,7 +11,7 @@ const client = require('twilio')(config.accountSID, config.authToken);
 
 module.exports = {
     getOtp: (number) => {
-        console.log(number, '-------------number1111111')
+        console.log(number,config, '-------------number1111111')
         return new Promise(async (resolve, reject) => {
 
             let response = {}
