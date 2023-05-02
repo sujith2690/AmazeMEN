@@ -1,0 +1,88 @@
+<section id="contact" class="contact">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Orders</h2>
+
+    </div>
+
+    <div class="card mb-4">
+      <table class="table table-hover">
+        <thead class="text-white" style="background-color: #013741;">
+          <tr>
+            <th scope="col">No:</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Products</th>
+            <th scope="col">Quantity & Price</th>
+            <th scope="col">Total Price</th>
+            {{!-- <th>Delivery</th> --}}
+            <th scope="col">Payment through</th>
+            <th scope="col">Delivery Status</th>
+            <th scope="col">View</th>
+            <th scope="col">Cancel Order</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+          {{#each orders}}
+          <tr class="cell-1">
+
+            <td scope="row">{{count @index}}</td>
+            <td class="text-center">{{format this.createdAt}}</td>
+            <td class="text-center"> {{#each this.orderitems}}{{this.productId.productname}} <br><br> {{/each}} </td>
+            <td class="text-center">{{#each this.orderitems}}{{this.quantity}} X {{this.productId.offerprice}} <br>
+              <br> {{/each}}
+            </td>
+            <td class="text-center">{{#each this.orderitems}}₹ {{subTotal this.productId.offerprice
+              this.quantity}}<br><br>
+              {{/each}} </td>
+            <td class="text-center">{{this.paymentMethod}}</td>
+            <td class="text-center"><span>{{this.productStatus}}</span></td>
+
+
+            <td class="text-center">
+              <p> <a href="/view_Order/{{this._id}}">
+                  <ion-icon name="search-outline" style="font-size: 20px;"></ion-icon>
+                </a></p>
+            </td>
+
+            {{#if (or (eq this.productStatus "Pending")(eq this.productStatus "Shipped"))}}
+
+
+            <td class="text-center"><a class="btn btn-outline-danger"
+                onclick="cancelorder(event,'{{this._id}}')">Cancel</a>
+            </td>
+
+            {{/if}}
+
+            {{#if (eq this.productStatus "Delivered")}}
+            <td class="text-center" style="color:green ;">Delivered</td>
+            {{/if}}
+            {{#if (eq this.productStatus "Cancelled")}}
+            <td class="text-center" style="color:red ;">Cancelled</td>
+            {{/if}}
+          </tr>
+
+        </tbody>
+
+        {{/each}}
+      </table>
+
+     
+
+    </div>
+  </div>
+
+
+  </div>
+
+</section><!-- End Contact Section -->
+
+<div class="container mt-5">
+
+</div>
+
+
+<script>
+
+
+</script>
