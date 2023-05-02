@@ -1,5 +1,5 @@
 const userModel = require('../model/user_model')
-require('dotenv');
+require('dotenv').config();
 
 let config = {
     serviceId: process.env.serviceId,
