@@ -35,8 +35,6 @@ module.exports = {
 
 
     },
-
-
     checkOut: (otpcode, data) => {
         console.log(otpcode, '-------otp number');
         console.log(data.mobile, '----------mobile number');
